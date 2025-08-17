@@ -13,4 +13,4 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '24'
-    - run: node config.js
+    - run: node compile.js
