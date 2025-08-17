@@ -9,9 +9,23 @@ jobs:
     name: "Compile Templates"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v2
+    - name: Checkout respository
+      uses: actions/checkout@v4
+    - name: Setup node env
+      uses: actions/setup-node@v2
       with:
         node-version: '24'
-    - run: npm ci
-    - run: npm run compile
+      run: npm ci
+    - name: Compile templates
+      run: npm run compile
+    - name: Commit changes
+      run: |
+        git config --global user.email "no-reply@github.com"
+        git config --global user.name "GitHub Actions"
+        git add build/
+        git commit -m "Compile"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB\_TOKEN }}@github.com/${{ github.repository }}
+      env:
+        GITHUB\_TOKEN: ${{ secrets.GITHUB\_TOKEN }}
+        
+        
