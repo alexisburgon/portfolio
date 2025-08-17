@@ -4,7 +4,7 @@
   "description": "",
   "main": "compile.js",
   "scripts": {
-    "compile": "node run compile.js"
+    "compile": "node compile.js"
   },
   "author": "",
   "license": "ISC",
