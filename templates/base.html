@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript">
+        // Set the theme
+        const theme = localStorage.getItem('theme') ?? (window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        document.documentElement.setAttribute('theme', theme);
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('theme');
+            const theme = (currentTheme == 'dark') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('theme', theme);
+        }
+    </script>
+    
+    <head>
+        <title>{{ pageTitle }}</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="lightSwitch" onclick="toggleTheme()">
+            <span class="marker"></span>
+            <span class="material-icons">light_mode</span>
+            <span class="material-icons">dark_mode</span>
+        </div>
+        <div id="pageBorder">
+            <div id="main">
+                <a id="title" href="index.html">{{ overallTitle }}</a>
+                <div id="pageList">
+                    {{#each pages }}
+                    {{#if pageTitle }}
+                    {{#nequiv file "index.html" }}
+                    <a href="{{file}}" {{#equiv pageTitle @root.pageTitle }}selected{{/equiv }}>{{#if this.displayName }}{{ this.displayName }}{{/if}}{{#unless this.displayName}}{{ this.pageTitle }}{{/unless}}</a>
+                    {{/nequiv }}
+                    {{/if }}
+                    {{/each }}
+                </div>
+                
+                <div id="pageContent">
+                    {{> pageContent }}
+                </div>
+            </div>
+            
+        </div>
+        
+    </body>
+</html>
