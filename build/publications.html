@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript">
+        // Set the theme
+        const theme = localStorage.getItem('theme') ?? (window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        document.documentElement.setAttribute('theme', theme);
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('theme');
+            const theme = (currentTheme == 'dark') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('theme', theme);
+        }
+    </script>
+    
+    <head>
+        <title>Publications</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="lightSwitch" onclick="toggleTheme()">
+            <span class="marker"></span>
+            <span class="material-icons">light_mode</span>
+            <span class="material-icons">dark_mode</span>
+        </div>
+        <div id="pageBorder">
+            <div id="main">
+                <a id="title" href="index.html">Alexis Burgon</a>
+                <div id="about">
+                    This is where the &#x27;about me&#x27; section will go
+                </div>
+                <div id="pageList">
+                    <a href="projects.html" >Projects</a>
+                    <a href="publications.html" selected>Publications</a>
+                </div>
+                <div id="pageContent">
+                    <div id="publication-list">
+                        <div> 
+                            <span class="publication-title">Decision region analysis to deconstruct the subgroup influence on AI/ML predictions</span>
+                            <span class="publication-publisher">Medical Imaging 2023: Computer-Aided Diagnosis</span>
+                            <span class="publication-year">(2023)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Effect of semantic distribution shift on AI knowledge retention in a sequential training paradigm</span>
+                            <span class="publication-publisher">Medical Imaging 2024: Computer-Aided Diagnosis</span>
+                            <span class="publication-year">(2024)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Decision region analysis for generalizability of artificial intelligence models: estimating model generalizability in the case of cross-reactivity and population shift</span>
+                            <span class="publication-publisher">Journal of Medical Imaging</span>
+                            <span class="publication-year">(2024)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">A tool for the assessment of AI generalizability via decision space composition</span>
+                            <span class="publication-publisher">Medical Imaging 2024: Computer-Aided Diagnosis</span>
+                            <span class="publication-year">(2024)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Manipulation of sources of bias in AI device development</span>
+                            <span class="publication-publisher">Medical Imaging 2024: Computer-Aided Diagnosis</span>
+                            <span class="publication-year">(2024)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Methods for improved understanding of evolving AI model learning and knowledge retention across sequential modification steps</span>
+                            <span class="publication-publisher">RSNA Program Book, T 6 -SSPH 08 - 6</span>
+                            <span class="publication-year">(2023)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Evaluation of AI bias mitigation algorithms by systematically promoting sources of bias</span>
+                            <span class="publication-publisher">RSNA Program Book, T 6 -SSPH 08 - 1</span>
+                            <span class="publication-year">(2023)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Semantic distribution shift in evolving artificial intelligence segmentation algorithms</span>
+                            <span class="publication-publisher">FDA Student Scientific Research Day</span>
+                            <span class="publication-year">(2023)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Predicting AI model behavior on unrepresented subgroups: a test-time approach to increase variability in a finite test set</span>
+                            <span class="publication-publisher">FDA Science Forum</span>
+                            <span class="publication-year">(2023)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Bias amplification to facilitate the systematic evaluation of bias mitigation methods</span>
+                            <span class="publication-publisher">IEEE Journal of Biomedical and Health Informatics</span>
+                            <span class="publication-year">(2024)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">Label-free AI bias mitigation</span>
+                            <span class="publication-publisher">Medical Imaging 2025: Computer-Aided Diagnosis</span>
+                            <span class="publication-year">(2025)</span>
+                        </div>
+                        <div> 
+                            <span class="publication-title">BEHYPE: bias evaluation using hyperdimensional computing in AI-assisted decision support systems</span>
+                            <span class="publication-publisher">Medical Imaging 2025: Computer-Aided Diagnosis</span>
+                            <span class="publication-year">(2025)</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="google-scholar-link" class="footer-left">
+                    For more information, <br/>
+                    see my <a href="https://scholar.google.com/citations?user=sfrd0esAAAAJ&hl=en">Google Scholar profile</a>
+                </div>            </div>
+            
+        </div>
+        
+    </body>
+</html>

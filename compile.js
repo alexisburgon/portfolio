@@ -2,6 +2,7 @@ const config = require('./config.js');
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars')
+const bibtex = require('bibtex');
 
 // Utility function
 function fileExists(file) {
@@ -22,12 +23,35 @@ Handlebars.registerHelper('nequiv', function(a,b,options) {
 // broadly needed variables
 const baseTemplateFile = path.join(config.templateDir, config.baseTemplate);
 
+function ProcessBibEntries(text) {
+    let entries = Object.values(bibtex.parseBibFile(text).entries$)
+    // console.log('RAW:', entries)
+    // console.log("==============================")
+    // for (var ent of entries) {
+    //     console.log(ent._id, ent.fields.url)
+    //     if (ent.fields.journal !== undefined)  continue;
+    //     if (ent.fields.organization !== undefined)  continue;
+    //     if (ent.fields.booktitle !== undefined)  continue;
+    //     console.log(ent._id, ent.fields.booktitle)
+    // }
+    return entries.map( e => ({
+        title: e.fields.title.data.map(d => d.trim()).filter(d => d.length > 0).join(" "),
+        year: e.fields.year.data[0],
+        publisher: (e.fields.journal ?? e.fields.booktitle ?? e.fields.organization).data.map(d => String(d).trim()).filter(d => d.length > 0).join(" ").replace(" :", ":").replace(" ,", ","),
+    }))
+}
+
 fileExists(config.templateDir).then( exists => {
     if (!exists) throw Error(`The indicated template directory does not exist (${config.templateDir})`);
 }).then( () => { // check that the output directory exists, or create it if it doesn't
     return fileExists(config.buildDir)
 }).then( (exists) => {
     if (!exists) fs.mkdirSync(config.buildDir)
+}).then( () => { // load the bibliography
+    return fs.promises.readFile(config.publicationFile, {encoding:'utf8'})
+}).then((citations) => {
+    config.publications = ProcessBibEntries(citations)
+    // console.log('Publications:', config.publications)
 }).then( () => { // get the base template (after checking that it exists)
     return fileExists(baseTemplateFile)
 }).then( (exists) => {
@@ -36,7 +60,7 @@ fileExists(config.templateDir).then( exists => {
 }).then( (fileContent) => { // compile each of the pages
     const baseTemplate = Handlebars.compile(fileContent)
     config.pages.forEach(page => {
-        console.log('Rendering the page:', page)
+        // console.log('Rendering the page:', page)
         // load the pageContent from the indicated file
         fs.promises.readFile(path.join(config.templateDir, page.file), {encoding:'utf8'}).then( (pageContent) => {
             Handlebars.registerPartial('pageContent', pageContent);
@@ -46,4 +70,5 @@ fileExists(config.templateDir).then( exists => {
             fs.promises.writeFile(outputFile, content, {encoding: 'utf8'})
         })
     })
+    console.log("Compilation complete")
 })
