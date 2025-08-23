@@ -16,6 +16,7 @@
     <head>
         <title>{{ pageTitle }}</title>
         <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <div id="lightSwitch" onclick="toggleTheme()">
@@ -26,6 +27,9 @@
         <div id="pageBorder">
             <div id="main">
                 <a id="title" href="index.html">{{ overallTitle }}</a>
+                <div id="about-me">
+                    THIS IS WHERE THE ABOUT ME SECTION WILL GO!
+                </div>
                 <div id="pageList">
                     {{#each pages }}
                     {{#if pageTitle }}
@@ -33,6 +37,14 @@
                     <a href="{{file}}" {{#equiv pageTitle @root.pageTitle }}selected{{/equiv }}>{{#if this.displayName }}{{ this.displayName }}{{/if}}{{#unless this.displayName}}{{ this.pageTitle }}{{/unless}}</a>
                     {{/nequiv }}
                     {{/if }}
+                    {{/each }}
+                </div>
+                <div id="contact-info">
+                    {{#each contactInformation }}
+                    <a class="contact-item link" href="{{this.link}}">
+                        <i class="fa-brands fa-{{icon}}"></i>
+                        <span class="link-text">{{ this.text }}</span>
+                    </a>
                     {{/each }}
                 </div>
                 
