@@ -233,6 +233,12 @@ body {
             font-weight: bold;
         }
     }
+    .publisher {
+        font-style: italic;
+    }
+    .year {
+        font-weight: bold;
+    }
     &[open] .indicator::after {
         height: 0%;
     }
