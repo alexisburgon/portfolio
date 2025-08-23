@@ -244,6 +244,9 @@ body {
     }
 }
 
+#about-me {
+    font-size: smaller;
+}
 
 #lightSwitch {
     --scale: 16px;

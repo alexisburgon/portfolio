@@ -3,6 +3,7 @@ module.exports = {
     baseTemplate: 'base.html',
     buildDir: './build',
     overallTitle: 'Alexis Burgon',
+    aboutMe: "Machine learning engineer with 3+ years of experience in regulatory science specializing in quality assurance, validation/verification, testing protocols, and process improvement for AI Software as a Medical Device (AI-SaMD).",
     pages: [
         // Templated files
         {pageTitle: 'index', file: 'index.html'},
