@@ -80,7 +80,7 @@ body {
 #pageList {
     --indicator-scale: 0.5em;
     grid-area: list;
-    font-size: larger;
+    font-size: x-large;
     > * {
         display: block;
         position: relative;

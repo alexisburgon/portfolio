@@ -6,9 +6,9 @@ module.exports = {
     aboutMe: "Machine learning engineer with 3+ years of experience in regulatory science specializing in quality assurance, validation/verification, testing protocols, and process improvement for AI Software as a Medical Device (AI-SaMD).",
     pages: [
         // Templated files
-        {pageTitle: 'index', file: 'index.html'},
-        {pageTitle: 'Projects', file: 'projects.html'},
-        {pageTitle: 'Publications', file:'publications.html'},
+        {pageTitle: 'Alexis Burgon', file: 'index.html'},
+        {pageTitle: 'Alexis Burgon - Projects', file: 'projects.html', displayName:'Projects'},
+        {pageTitle: 'Alexis Burgon - Publications', file:'publications.html', displayName:'Publications'},
         // Static files
         {file: 'style.css', noTemplate:true}
     ],
