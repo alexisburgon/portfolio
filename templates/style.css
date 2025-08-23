@@ -250,6 +250,7 @@ body {
 
 #lightSwitch {
     --scale: 16px;
+    cursor: pointer;
     background-color: hsla(from var(--text) h s l / 0.2);
     color: var(--background);
     position: absolute;
