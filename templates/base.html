@@ -2,9 +2,8 @@
 <html>
     <script type="text/javascript">
         // Set the theme
-        const theme = localStorage.getItem('theme') ?? (window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        const theme = localStorage.getItem('theme') ?? ((window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
         document.documentElement.setAttribute('theme', theme);
-
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('theme');
             const theme = (currentTheme == 'dark') ? 'light' : 'dark';
