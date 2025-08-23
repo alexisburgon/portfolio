@@ -23,11 +23,24 @@ Handlebars.registerHelper('nequiv', function(a,b,options) {
 // broadly needed variables
 const baseTemplateFile = path.join(config.templateDir, config.baseTemplate);
 
+function getAuthors(data) {
+    data = data.map(d => d.trim()).filter(d => d.length > 0).map(d => (d == ',') ? ',' : " "+d).join("").split('and').map( a => a.trim());
+    return data.map(d => {
+        let names = d.split(",").map(a => a.trim()).reverse()
+        return Object.assign(names, {
+            first: names[0],
+            last: names[1],
+        })
+    })
+}
+
+
 function ProcessBibEntries(text) {
     let entries = Object.values(bibtex.parseBibFile(text).entries$)
     // console.log('RAW:', entries)
     return entries.map( e => ({
         id: e._id,
+        author: getAuthors(e.fields.author.data),
         title: e.fields.title.data.map(d => d.trim()).filter(d => d.length > 0).join(" "),
         year: e.fields.year.data[0],
         publisher: (e.fields.journal ?? e.fields.booktitle ?? e.fields.organization).data.map(d => String(d).trim()).filter(d => d.length > 0).join(" ").replace(" :", ":").replace(" ,", ","),

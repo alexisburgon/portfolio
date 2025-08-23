@@ -30,6 +30,7 @@ body {
     display: grid;
     --pad: 2.5em;
     padding: var(--pad);
+    overflow: hidden;
 }
 
 #pageBorder {
@@ -39,6 +40,7 @@ body {
     padding: 0.3em;
     /* TODO: more interesting background color */
     background-color: currentColor; 
+    overflow: hidden;
     > * {
         background-color: var(--background);
     }
@@ -46,17 +48,30 @@ body {
 #main {
     display: grid;
     padding: 1em; 
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: "header content" "list content";
+    grid-template-columns: minmax(auto, 20vw) 1fr;
+    grid-template-rows: auto  auto 1fr auto;
+    grid-template-areas: "header content" "about content" "list content" "contact content";
     gap: 1em;
+    height: 100%;
+    overflow: hidden;
     /* > * {
         border: 1px dotted red;
     } */
 }
+
+#contact-info {
+    grid-area: contact;
+    display: grid;
+}
+
 #pageContent {
-    padding: 2em;
     grid-area: content;
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 0.5em;
+    margin-right: -0.5em;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(from currentColor r g b / 0.8) rgba(from currentColor r g b / 0.2);
 }
 #title {
     font-size: xx-large;
@@ -65,6 +80,7 @@ body {
 #pageList {
     --indicator-scale: 0.5em;
     grid-area: list;
+    font-size: larger;
     > * {
         display: block;
         position: relative;
@@ -90,6 +106,138 @@ body {
         }
     }
 }
+
+#project-display, #publication-display {
+    display: grid;
+    gap: 1em;
+    padding: 1em;
+}
+
+#project-display {
+    grid-auto-flow: columns;
+    grid-template-columns: repeat(auto-fit, minmax(30em, 1fr));
+}
+
+.project-border, .publication-border {
+    display: grid;
+    background: linear-gradient(
+        135deg,
+        currentColor var(--border-length),
+        transparent var(--border-length),
+        transparent calc(100% - var(--border-length)),
+        currentColor calc(100% - var(--border-length))
+    );
+    /* Border-styling arguments */
+    --border-length: 2em;
+    padding: 0.25em; /* Border thickness */
+}
+
+.project, .publication {
+    border: var(--border-width) solid transparent;
+    background: var(--background);
+    background-clip: padding-box;
+    > a {
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+    }
+}
+.project, .publication > summary {
+    display: grid;
+    padding: 0.5em;
+}
+
+.project {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "title link" "blurb blurb";
+    column-gap: 1em;
+    a.project-link {
+        grid-area: link;
+    }
+    .title {
+        grid-area: title;
+        font-size: x-large;
+        font-weight: bold;
+    }
+    .description {
+        grid-area: blurb;
+    }
+}
+
+.publication {
+    > summary, .abstract {
+        margin-left: 1em;
+    }
+    > summary {
+        position: relative;        
+        &::marker {
+            content: "";
+        }
+        .indicator {
+            cursor: pointer;
+            position: absolute;
+            right: calc(100% - var(--ind-scale) / 3);
+            height: 1.25em;
+            width: var(--ind-scale);
+            top: 0.5em; /* Same as the summary padding! */
+            display: inline-block;
+            --ind-thickness: 0.15em;
+            --ind-scale: 0.75em;
+            &::before {
+                content: "";
+                display: inline-block;
+                width: var(--ind-scale);
+                height: var(--ind-thickness);
+                top: 50%;
+                left: 50%;
+                background-color: currentColor;
+                position: absolute;
+                transform: translate(-50%, -50%);
+            }
+            &::after {
+                content: "";
+                height: var(--ind-scale);
+                top: 50%;
+                left: 50%;
+                width: var(--ind-thickness);
+                position: absolute;
+                transform: translate(-50%, -50%);
+                background-color: currentColor;
+                transition: height 0.5s;
+            }
+        }
+    }
+    .title {
+        font-weight: bold;
+    }
+    .info {
+        display: flex;
+        justify-content: space-between;
+        .link {
+            display: flex;
+            .material-icons {
+                font-size: larger;
+            }
+        }
+    }
+    .author-list {
+        font-size: smaller;
+        > :not(:last-child)::after {
+            content: ",";
+        }
+        > :last-child:not(:first-child)::before {
+            content: 'and ';
+        }
+        .me {
+            font-weight: bold;
+        }
+    }
+    &[open] .indicator::after {
+        height: 0%;
+    }
+}
+
 
 #lightSwitch {
     --scale: 16px;
@@ -123,6 +271,16 @@ body {
         transition-property: left, background-color, transform;
         transition-duration: 0.5s;
         transform: translate(0%);
+    }
+}
+
+.link {
+    text-decoration: none;
+    .link-text {
+        text-decoration-line: underline;
+        &:hover {
+            text-decoration-style: double;
+        }
     }
 }
 

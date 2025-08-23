@@ -1,0 +1,26 @@
+<div id="publication-display">
+    {{#each publications }}
+    <div class="publication-border">
+        <details class="publication" name="publication">
+            <summary>
+                {{#if abstract}}<span class="indicator"></span>{{/if }}
+                <div class="title"> {{ title }}</div>
+                <div class="info">
+                    <div class="author-list">
+                        {{#each author}}
+                        <span class="{{#equiv this.last 'Burgon' }}me{{/equiv}}">{{this.first}} {{this.last}}</span>
+                        {{/each }}
+                    </div>
+                    {{#if url}}
+                    <a class="publication-link link" href="{{url}}">
+                        <span class="link-text">Read online</span>
+                        <i class="material-icons">arrow_outward</i>
+                    </a>
+                    {{/if }}
+                </div>
+            </summary>
+            {{#if abstract}}<div class="abstract">{{ abstract }}</div>{{/if }}
+        </details>
+    </div>
+    {{/each }}
+</div>
