@@ -12,8 +12,8 @@
 
 /* Theme management */
 :root {
-    --background: white;
-    --text: black;
+    --background: gainsboro;
+    --text: rgb(36, 36, 36);
 
     background-color: var(--background);
     color: var(--text);
@@ -21,7 +21,7 @@
 }
 :root[theme='dark'] {
     --background: rgb(36, 36, 36);
-    --text: white;
+    --text: gainsboro;
 }
 
 body {
