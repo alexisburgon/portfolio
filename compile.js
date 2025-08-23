@@ -26,15 +26,8 @@ const baseTemplateFile = path.join(config.templateDir, config.baseTemplate);
 function ProcessBibEntries(text) {
     let entries = Object.values(bibtex.parseBibFile(text).entries$)
     // console.log('RAW:', entries)
-    // console.log("==============================")
-    // for (var ent of entries) {
-    //     console.log(ent._id, ent.fields.url)
-    //     if (ent.fields.journal !== undefined)  continue;
-    //     if (ent.fields.organization !== undefined)  continue;
-    //     if (ent.fields.booktitle !== undefined)  continue;
-    //     console.log(ent._id, ent.fields.booktitle)
-    // }
     return entries.map( e => ({
+        id: e._id,
         title: e.fields.title.data.map(d => d.trim()).filter(d => d.length > 0).join(" "),
         year: e.fields.year.data[0],
         publisher: (e.fields.journal ?? e.fields.booktitle ?? e.fields.organization).data.map(d => String(d).trim()).filter(d => d.length > 0).join(" ").replace(" :", ":").replace(" ,", ","),
@@ -51,6 +44,13 @@ fileExists(config.templateDir).then( exists => {
     return fs.promises.readFile(config.publicationFile, {encoding:'utf8'})
 }).then((citations) => {
     config.publications = ProcessBibEntries(citations)
+    config.publications.forEach( pub => {
+        let add = config.additionalPublicationInfo[pub.id];
+        if (add !== undefined) {
+           pub.url = add.url;
+           pub.abstract = add.abstract; 
+        }
+    })
     // console.log('Publications:', config.publications)
 }).then( () => { // get the base template (after checking that it exists)
     return fileExists(baseTemplateFile)
