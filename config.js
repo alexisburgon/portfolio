@@ -13,8 +13,8 @@ module.exports = {
         {file: 'style.css', noTemplate:true}
     ],
     projects: [
-        {name: 'DRAGen', link:'https://github.com/DIDSR/DRAGen'},
-        {name: 'bias.myti.report', link:'https://github.com/DIDSR/bias.myti.report'},
+        {name: 'DRAGen', link:'https://github.com/DIDSR/DRAGen', description:"AI/ML generalizability assessment through decision region analysis."},
+        {name: 'bias.myti.report', link:'https://github.com/DIDSR/bias.myti.report', description:"A tool that facilitates the evaluation and comparison of bias mitigation methods thorough two novel bias amplification approaches."},
     ],
     contactInformation: [
         {icon: 'google-scholar', link:'https://scholar.google.com/citations?user=sfrd0esAAAAJ&hl=en', text:'Google Scholar'},
