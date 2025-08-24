@@ -17,8 +17,8 @@ module.exports = {
         {name: 'bias.myti.report', link:'https://github.com/DIDSR/bias.myti.report', image:'bias-myti-visual-abstract.png', description:"A tool that facilitates the evaluation and comparison of bias mitigation methods thorough two novel bias amplification approaches."},
     ],
     contactInformation: [
-        {icon: 'google-scholar', link:'https://scholar.google.com/citations?user=sfrd0esAAAAJ&hl=en', text:'Google Scholar'},
         {icon: 'linkedin', link:'', text:'LinkedIn'},
+        {icon: 'google-scholar', link:'https://scholar.google.com/citations?user=sfrd0esAAAAJ&hl=en', text:'Google Scholar'},
     ],
     publicationFile: './publications.bib',
     additionalPublicationInfo: {
