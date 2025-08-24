@@ -255,6 +255,7 @@ body {
 
 #about-me {
     font-size: smaller;
+    white-space: pre-line;
 }
 
 #lightSwitch {

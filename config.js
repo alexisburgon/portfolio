@@ -3,7 +3,7 @@ module.exports = {
     baseTemplate: 'base.html',
     buildDir: './build',
     overallTitle: 'Alexis Burgon',
-    aboutMe: "Machine Learning & Quality Assurance Engineer | Building testing frameworks and validation tools for regulatory compliance | Python, javascript, SQL",
+    aboutMe: "Machine Learning & Quality Assurance Engineer \n Building testing frameworks and validation tools for regulatory compliance \n Python, javascript, SQL",
     pages: [
         // Templated files
         {pageTitle: 'Alexis Burgon', file: 'index.html'},
