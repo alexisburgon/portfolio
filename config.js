@@ -3,7 +3,7 @@ module.exports = {
     baseTemplate: 'base.html',
     buildDir: './build',
     overallTitle: 'Alexis Burgon',
-    aboutMe: "Quality Assurance Engineer | Building automated testing frameworks and validation tools for regulatory compliance | Python, javascript, SQL",
+    aboutMe: "Machine Learning & Quality Assurance Engineer | Building testing frameworks and validation tools for regulatory compliance | Python, javascript, SQL",
     pages: [
         // Templated files
         {pageTitle: 'Alexis Burgon', file: 'index.html'},
@@ -13,8 +13,8 @@ module.exports = {
         {file: 'style.css', noTemplate:true}
     ],
     projects: [
-        {name: 'DRAGen', link:'https://github.com/DIDSR/DRAGen', description:"AI/ML generalizability assessment through decision region analysis."},
-        {name: 'bias.myti.report', link:'https://github.com/DIDSR/bias.myti.report', description:"A tool that facilitates the evaluation and comparison of bias mitigation methods thorough two novel bias amplification approaches."},
+        {name: 'DRAGen', link:'https://github.com/DIDSR/DRAGen', image:'DRAGen-flowchart.png', description:"AI/ML generalizability assessment through decision region analysis."},
+        {name: 'bias.myti.report', link:'https://github.com/DIDSR/bias.myti.report', image:'bias-myti-visual-abstract.png', description:"A tool that facilitates the evaluation and comparison of bias mitigation methods thorough two novel bias amplification approaches."},
     ],
     contactInformation: [
         {icon: 'google-scholar', link:'https://scholar.google.com/citations?user=sfrd0esAAAAJ&hl=en', text:'Google Scholar'},

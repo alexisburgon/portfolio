@@ -148,9 +148,9 @@ body {
 }
 
 .project {
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr auto;
-    grid-template-areas: "title link" "blurb blurb";
+    grid-template-areas:  "title link" "blurb blurb" "img img";
     column-gap: 1em;
     a.project-link {
         grid-area: link;
@@ -162,6 +162,15 @@ body {
     }
     .description {
         grid-area: blurb;
+    }
+    img {
+        grid-area: img;
+        max-width: 30em;
+        display: block;
+        width: auto;
+        height: auto;
+        place-self: center;
+        margin: 0.5em;
     }
 }
 

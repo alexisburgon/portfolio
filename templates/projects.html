@@ -9,6 +9,9 @@
                 <i class="material-icons">arrow_outward</i>
             </a>
             {{/if }}
+            {{#if image}}
+            <img src="images/{{ image }}" width="2784" height="1374" alt="{{ imageAltText }}">
+            {{/if }}
             <div class="description">{{ description }}</div>
         </div>
     </div>
