@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript">
+        // Set the theme
+        const theme = localStorage.getItem('theme') ?? ((window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+        document.documentElement.setAttribute('theme', theme);
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('theme');
+            const theme = (currentTheme == 'dark') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('theme', theme);
+        }
+    </script>
+    
+    <head>
+        <title>Alexis Burgon</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div id="lightSwitch" onclick="toggleTheme()">
+            <span class="marker"></span>
+            <span class="material-icons">light_mode</span>
+            <span class="material-icons">dark_mode</span>
+        </div>
+        <div id="pageBorder">
+            <div id="main">
+                <a id="title" href="index.html">Alexis Burgon</a>
+                <div id="about-me"> Machine Learning &amp; Quality Assurance Engineer 
+ Building testing frameworks and validation tools for regulatory compliance 
+ Python, javascript, SQL</div>
+                <div id="pageList">
+                    <a href="projects.html" >Projects</a>
+                    <a href="publications.html" >Publications</a>
+                </div>
+                <div id="contact-info">
+                    <a class="contact-item link" href="">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span class="link-text">LinkedIn</span>
+                    </a>
+                    <a class="contact-item link" href="https://scholar.google.com/citations?user&#x3D;sfrd0esAAAAJ&amp;hl&#x3D;en">
+                        <i class="fa-brands fa-google-scholar"></i>
+                        <span class="link-text">Google Scholar</span>
+                    </a>
+                </div>
+                
+                <div id="pageContent">
+                </div>
+            </div>
+            
+        </div>
+        
+    </body>
+</html>
