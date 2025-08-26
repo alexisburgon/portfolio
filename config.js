@@ -10,7 +10,8 @@ module.exports = {
         {pageTitle: 'Alexis Burgon - Projects', file: 'projects.html', displayName:'Projects'},
         {pageTitle: 'Alexis Burgon - Publications', file:'publications.html', displayName:'Publications'},
         // Static files
-        {file: 'style.css', noTemplate:true}
+        {file: 'style.css', noTemplate:true},
+        {file: '.nojekyll', noTemplate:true},
     ],
     projects: [
         {name: 'DRAGen', link:'https://github.com/DIDSR/DRAGen', image:'DRAGen-flowchart.png', description:"AI/ML generalizability assessment through decision region analysis."},
